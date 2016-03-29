@@ -20,6 +20,13 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+// Add headers
+app.use(function (req, res, next) {
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', null);
+    next();
+});
+
 var beerController = require('./routes/beer');
 router.route('/beer')
 	.get(beerController.get)
