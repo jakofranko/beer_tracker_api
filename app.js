@@ -16,14 +16,14 @@ app.use(session({
 }));
 
 // Use the body-parser package in our application
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(bodyParser.json());
 
 // Add headers
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', null);
+    res.set('Access-Control-Allow-Origin', null);
+    res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+    res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
     next();
 });
 
